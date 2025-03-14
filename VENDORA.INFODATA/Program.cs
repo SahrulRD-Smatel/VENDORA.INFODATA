@@ -58,7 +58,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("http://localhost:5173", "https://localhost:5173", "https://stormy-mite-vendora-ae21f7fd.koyeb.app") // 🛑 Hanya izinkan frontend ini
+                          policy.WithOrigins("http://localhost:5173", "https://localhost:5173", "https://fresh-kristan-vendora-d56b0214.koyeb.app") // 🛑 Hanya izinkan frontend ini
                                 .AllowAnyMethod()
                                 .AllowAnyHeader()
                                 .AllowCredentials(); // ✅ Harus ditambahkan agar `withCredentials: true` JWT di frontend bisa berjalan
@@ -73,7 +73,7 @@ app.UseSwaggerUI();
 
 app.UseRouting();
 app.UseCors(MyAllowSpecificOrigins);  // 🔥 Harus dipanggil sebelum endpoint
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseAuthentication();   // 🔐 Pastikan ini sebelum Authorization
 app.UseAuthorization();
 
@@ -85,5 +85,7 @@ app.UseEndpoints(endpoints =>
     endpoints.MapHub<ChatHub>("/hubs/chat");
     endpoints.MapHub<NotificationHub>("/hubs/notifications");
 });
+
+app.MapGet("/", () => "API is running!");
 
 app.Run();
