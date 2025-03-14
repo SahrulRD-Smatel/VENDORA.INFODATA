@@ -12,6 +12,7 @@ using VENDORA.INFODATA.Hubs;
 using VENDORA.INFODATA.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls("http://0.0.0.0:8000");
 
 // 🔥 1. Tambahkan Controllers & Swagger
 builder.Services.AddControllers();
