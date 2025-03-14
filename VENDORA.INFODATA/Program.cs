@@ -68,12 +68,8 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // ✅ Konfigurasi Middleware
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    app.UseDeveloperExceptionPage();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseRouting();
 app.UseCors(MyAllowSpecificOrigins);  // 🔥 Harus dipanggil sebelum endpoint
