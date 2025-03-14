@@ -12,7 +12,10 @@ using VENDORA.INFODATA.Hubs;
 using VENDORA.INFODATA.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.WebHost.UseUrls("http://0.0.0.0:8000");
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8000";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
 
 // 🔥 1. Tambahkan Controllers & Swagger
 builder.Services.AddControllers();
@@ -72,6 +75,7 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
+app.UseRouting();
 app.UseCors(MyAllowSpecificOrigins);  // 🔥 Harus dipanggil sebelum endpoint
 //app.UseHttpsRedirection();
 app.UseAuthentication();   // 🔐 Pastikan ini sebelum Authorization
