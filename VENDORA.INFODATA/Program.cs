@@ -73,7 +73,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(MyAllowSpecificOrigins);  // 🔥 Harus dipanggil sebelum endpoint
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseAuthentication();   // 🔐 Pastikan ini sebelum Authorization
 app.UseAuthorization();
 
