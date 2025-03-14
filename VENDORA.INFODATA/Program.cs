@@ -83,10 +83,11 @@ app.UseAuthorization();
 
 app.UseExceptionHandler("/error");
 
-app.MapControllers();
-
-// Konfigurasi endpoint SignalR
-app.MapHub<ChatHub>("/hubs/chat");
-app.MapHub<NotificationHub>("/hubs/notifications");
+app.UseEndpoints(endpoints => 
+{
+    endpoints.MapControllers(); // ✅ Ini WAJIB ada!
+    endpoints.MapHub<ChatHub>("/hubs/chat");
+    endpoints.MapHub<NotificationHub>("/hubs/notifications");
+});
 
 app.Run();
