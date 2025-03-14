@@ -1,0 +1,6 @@
+@VENDORA.INFODATA_HostAddress = http://localhost:5258
+
+GET {{VENDORA.INFODATA_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
